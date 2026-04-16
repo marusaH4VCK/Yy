@@ -26,13 +26,15 @@ jobs:
 
       - name: Setup iOS SDK
         run: |
+          # แก้ปัญหา Error 128 ด้วยการลบของเก่าก่อน
+          rm -rf $HOME/theos/sdks
           git clone --depth 1 https://github.com/theos/sdks.git $HOME/theos/sdks
 
       - name: Build Package
         run: |
           export THEOS=$HOME/theos
-          # เลือกสถาปัตยกรรมและเวอร์ชัน
           export ARCHS=arm64
+          # แนะนำให้ใช้ SDK 14.0 หรือล่าสุดที่มีใน Repo
           export TARGET=iphone:clang:latest:14.0
           make package FINALPACKAGE=1
 
