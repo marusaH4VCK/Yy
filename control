@@ -1,0 +1,9 @@
+Package: com.yourname.freefirekeyauth
+Name: FreeFireKeyAuth
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Description: Free Fire MAX Key Auth UI
+Maintainer: YourName
+Author: YourName
+Section: Tweaks
+Depends: mobilesubstrate
