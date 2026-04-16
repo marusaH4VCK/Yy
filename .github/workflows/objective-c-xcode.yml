@@ -1,0 +1,28 @@
+name: Build KeyAuthUI dylib
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build dylib
+        run: |
+          # เรียกใช้งานผ่าน Makefile ที่เราสร้างไว้
+          make all
+          
+          # ตรวจสอบไฟล์ที่ได้
+          ls -lah libKeyAuthUI.dylib
+
+      - name: Upload dylib
+        uses: actions/upload-artifact@v4
+        with:
+          name: KeyAuthUI-Binary
+          path: libKeyAuthUI.dylib
